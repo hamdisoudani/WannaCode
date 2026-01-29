@@ -1,0 +1,172 @@
+/* ==========================================================================
+   Workbench Layout Styles - Professional IDE Layout
+   ========================================================================== */
+
+.workbench {
+  display: flex;
+  width: 100%;
+  flex: 1;
+  min-height: 0;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+/* Disable pointer events on content during resize */
+.workbench--resizing * {
+  pointer-events: none;
+}
+
+.workbench--resizing .workbench__resizer {
+  pointer-events: auto;
+}
+
+/* -------------------------------------------------------------------------
+   Sidebar - Fixed left column (after Activity Bar)
+   ------------------------------------------------------------------------- */
+
+.workbench__sidebar {
+  position: relative;
+  min-width: 0;
+  max-width: var(--sidebar-max-width);
+  height: 100%;
+  background: var(--bg-sidebar);
+  border-right: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: width 0.15s ease-out;
+}
+
+.workbench__sidebar--hidden {
+  width: 0 !important;
+  border-right: none;
+  overflow: hidden;
+}
+
+.workbench__sidebar--hidden>* {
+  visibility: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   Main Content Area - Editor + Terminal stacked vertically
+   ------------------------------------------------------------------------- */
+
+.workbench__content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-primary);
+}
+
+/* -------------------------------------------------------------------------
+   Editor Row - Editor + AI Panel side by side
+   ------------------------------------------------------------------------- */
+
+.workbench__editor-row {
+  flex: 1;
+  display: flex;
+  flex-direction: row;
+  min-height: 0;
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   Editor Panel - Takes remaining space after AI Panel
+   ------------------------------------------------------------------------- */
+
+.workbench__editor {
+  flex: 1;
+  min-height: 0;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  background: var(--bg-editor);
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   Terminal Panel - Fixed height at bottom of editor area
+   ------------------------------------------------------------------------- */
+
+.workbench__terminal {
+  position: relative;
+  min-height: 0;
+  max-height: var(--terminal-max-height);
+  background: var(--bg-terminal);
+  border-top: 1px solid var(--border-color);
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: height 0.15s ease-out;
+}
+
+.workbench__terminal--hidden {
+  height: 0 !important;
+  min-height: 0 !important;
+  border-top: none;
+  overflow: hidden;
+}
+
+.workbench__terminal--hidden>* {
+  visibility: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   Resizer Handles
+   ------------------------------------------------------------------------- */
+
+.workbench__resizer {
+  position: absolute;
+  background: transparent;
+  z-index: var(--z-sticky);
+  transition: background var(--transition-fast);
+}
+
+.workbench__resizer:hover,
+.workbench__resizer:active,
+.resizer--active {
+  background: var(--color-blue);
+}
+
+/* Horizontal resizer (sidebar) */
+.workbench__resizer--horizontal {
+  width: 3px;
+  height: 100%;
+  cursor: col-resize;
+  right: -1px;
+  top: 0;
+}
+
+/* Vertical resizer (terminal) */
+.workbench__resizer--vertical {
+  width: 100%;
+  height: 3px;
+  cursor: row-resize;
+  top: -1px;
+  left: 0;
+}
+
+/* Extend hit area for easier grabbing */
+.workbench__resizer::before {
+  content: '';
+  position: absolute;
+}
+
+.workbench__resizer--horizontal::before {
+  top: 0;
+  bottom: 0;
+  left: -3px;
+  right: -3px;
+}
+
+.workbench__resizer--vertical::before {
+  left: 0;
+  right: 0;
+  top: -3px;
+  bottom: -3px;
+}

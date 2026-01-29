@@ -1,0 +1,613 @@
+/* ==========================================================================
+   BottomPanel Styles - Professional Terminal Panel
+   ========================================================================== */
+
+.bottom-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: var(--bg-terminal);
+  overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   Header / Tab Bar
+   ------------------------------------------------------------------------- */
+
+.bottom-panel__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--panel-header-height);
+  min-height: var(--panel-header-height);
+  background: var(--bg-secondary);
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 var(--spacing-1);
+  flex-shrink: 0;
+}
+
+.bottom-panel__tabs {
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.bottom-panel__tab {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1-5);
+  height: 100%;
+  padding: 0 var(--spacing-2-5);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  border-bottom: 1px solid transparent;
+  margin-bottom: -1px;
+  transition: all var(--transition-fast);
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  font-weight: var(--font-weight-medium);
+}
+
+.bottom-panel__tab:hover {
+  color: var(--text-secondary);
+}
+
+.bottom-panel__tab--active {
+  color: var(--text-primary);
+  border-bottom-color: var(--color-blue);
+}
+
+.bottom-panel__tab-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 var(--spacing-1);
+  background: var(--color-surface1);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+
+/* -------------------------------------------------------------------------
+   Terminal Controls
+   ------------------------------------------------------------------------- */
+
+.bottom-panel__terminal-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-0-5);
+  margin-left: auto;
+  padding-right: var(--spacing-2);
+}
+
+.bottom-panel__dropdown-container {
+  position: relative;
+}
+
+.bottom-panel__terminal-type {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-1) var(--spacing-2);
+  background: var(--color-surface0);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  color: var(--text-secondary);
+  transition: all var(--transition-fast);
+}
+
+.bottom-panel__terminal-type:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+  border-color: var(--border-color-strong);
+}
+
+.bottom-panel__terminal-type svg {
+  width: 12px;
+  height: 12px;
+  opacity: 0.8;
+}
+
+.bottom-panel__terminal-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 16px;
+  height: 16px;
+  padding: 0 4px;
+  background: var(--color-blue);
+  border-radius: var(--radius-full);
+  font-size: 10px;
+  color: var(--bg-primary);
+  font-weight: var(--font-weight-semibold);
+  margin-left: var(--spacing-1);
+}
+
+.bottom-panel__dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  min-width: 160px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-dropdown);
+  overflow: hidden;
+}
+
+.bottom-panel__dropdown-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  width: 100%;
+  padding: var(--spacing-1-5) var(--spacing-3);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-align: left;
+  transition: all var(--transition-fast);
+  position: relative;
+}
+
+.bottom-panel__dropdown-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.bottom-panel__dropdown-item svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.8;
+}
+
+.bottom-panel__dropdown-item--active {
+  background: var(--bg-selected);
+  color: var(--text-primary);
+}
+
+.bottom-panel__dropdown-item--active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-blue);
+}
+
+.bottom-panel__dropdown-index {
+  margin-left: auto;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+/* -------------------------------------------------------------------------
+   Action Buttons
+   ------------------------------------------------------------------------- */
+
+.bottom-panel__actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-0-5);
+}
+
+.bottom-panel__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.bottom-panel__action svg {
+  width: 14px;
+  height: 14px;
+}
+
+.bottom-panel__action:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.bottom-panel__action:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.bottom-panel__action:disabled:hover {
+  background: transparent;
+  color: var(--text-muted);
+}
+
+/* -------------------------------------------------------------------------
+   Search Bar
+   ------------------------------------------------------------------------- */
+.bottom-panel__search-bar {
+  position: absolute;
+  top: 4px;
+  right: 140px;
+  /* Position to left of actions */
+  display: flex;
+  align-items: center;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 2px 4px;
+  z-index: 10;
+  box-shadow: var(--shadow-md);
+  height: 26px;
+}
+
+.bottom-panel__search-input {
+  background: transparent;
+  border: none;
+  color: var(--text-primary);
+  font-size: var(--font-size-xs);
+  width: 150px;
+  outline: none;
+  padding: 0 4px;
+}
+
+.bottom-panel__search-actions {
+  display: flex;
+  align-items: center;
+  border-left: 1px solid var(--border-color);
+  padding-left: 4px;
+  margin-left: 4px;
+}
+
+.bottom-panel__search-actions button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.bottom-panel__search-actions button:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.bottom-panel__action--active {
+  background: var(--bg-selected);
+  color: var(--text-primary);
+}
+
+.bottom-panel__divider {
+  width: 1px;
+  height: 16px;
+  background: var(--border-color);
+  margin: 0 var(--spacing-0-5);
+}
+
+/* -------------------------------------------------------------------------
+   Content Area
+   ------------------------------------------------------------------------- */
+
+.bottom-panel__content {
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* -------------------------------------------------------------------------
+   Terminal Sidebar (List View)
+   ------------------------------------------------------------------------- */
+
+.bottom-panel__container {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.bottom-panel__sidebar {
+  width: 180px;
+  min-width: 150px;
+  height: 100%;
+  border-left: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-panel__sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-1) var(--spacing-2);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  color: var(--text-muted);
+  text-transform: uppercase;
+}
+
+.bottom-panel__sidebar-list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-1) 0;
+}
+
+.bottom-panel__sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-2);
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  border-left: 2px solid transparent;
+  transition: all var(--transition-fast);
+}
+
+.bottom-panel__sidebar-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.bottom-panel__sidebar-item--active,
+.bottom-panel__sidebar-item--active:hover {
+  background: rgba(122, 162, 247, 0.15);
+  /* Subtle blue tint */
+  color: var(--text-primary);
+  border-left-color: var(--color-blue);
+}
+
+.bottom-panel__sidebar-item svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.8;
+}
+
+.bottom-panel__sidebar-item svg.trash-icon {
+  opacity: 0;
+  margin-left: auto;
+  color: var(--text-muted);
+  width: 12px;
+  height: 12px;
+}
+
+.bottom-panel__sidebar-item:hover svg.trash-icon {
+  opacity: 1;
+}
+
+.bottom-panel__sidebar-item svg.trash-icon:hover {
+  color: var(--color-red);
+}
+
+/* Update main terminal wrapper to work in flex row */
+.bottom-panel__terminal-wrapper {
+  flex: 1;
+  min-width: 0;
+  height: 100%;
+  position: relative;
+  /* Parent is relative */
+  overflow: hidden;
+}
+
+/* Each terminal pane stacks absolutely */
+.bottom-panel__terminal-pane {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-panel__terminal-pane--hidden {
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* -------------------------------------------------------------------------
+   Context Menu
+   ------------------------------------------------------------------------- */
+
+.bottom-panel__context-menu {
+  position: fixed;
+  min-width: 160px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color-strong);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: 9999;
+  padding: var(--spacing-1) 0;
+  overflow: hidden;
+}
+
+.bottom-panel__context-menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  width: 100%;
+  padding: var(--spacing-1-5) var(--spacing-3);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.bottom-panel__context-menu-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.bottom-panel__context-menu-item:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.bottom-panel__context-menu-item--danger:hover {
+  background: rgba(247, 118, 142, 0.15);
+  color: var(--color-red);
+}
+
+.bottom-panel__context-menu-item svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.8;
+}
+
+.bottom-panel__context-menu-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: var(--spacing-1) 0;
+}
+
+/* -------------------------------------------------------------------------
+   Rename Input
+   ------------------------------------------------------------------------- */
+
+.bottom-panel__rename-input {
+  flex: 1;
+  background: var(--bg-primary);
+  border: 1px solid var(--color-blue);
+  border-radius: var(--radius-sm);
+  padding: 2px 6px;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.bottom-panel__rename-input:focus {
+  box-shadow: 0 0 0 2px rgba(122, 162, 247, 0.3);
+}
+
+/* -------------------------------------------------------------------------
+   Problems View
+   ------------------------------------------------------------------------- */
+
+.problems-view {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.problems-view__summary {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-2) var(--spacing-3);
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-secondary);
+  font-size: var(--font-size-xs);
+}
+
+.problems-view__count {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  color: var(--text-secondary);
+}
+
+.problems-view__count--error {
+  color: #f7768e;
+}
+
+.problems-view__count--warning {
+  color: #e0af68;
+}
+
+.problems-view__count--info {
+  color: #7aa2f7;
+}
+
+.problems-view__list {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--spacing-1) 0;
+}
+
+.problems-view__file {
+  margin-bottom: var(--spacing-1);
+}
+
+.problems-view__file-header {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  background: var(--bg-surface0);
+}
+
+.problems-view__file-name {
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+.problems-view__file-path {
+  opacity: 0.6;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.problems-view__item {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  width: 100%;
+  padding: var(--spacing-1) var(--spacing-3);
+  padding-left: var(--spacing-4);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.problems-view__item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.problems-view__severity {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  margin-top: 2px;
+}
+
+.problems-view__message {
+  flex: 1;
+  line-height: 1.4;
+}
+
+.problems-view__location {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.problems-view__source {
+  flex-shrink: 0;
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  opacity: 0.7;
+}

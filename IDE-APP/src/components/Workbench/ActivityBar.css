@@ -1,0 +1,286 @@
+/* ==========================================================================
+   Activity Bar Styles - Professional sidebar icons
+   ========================================================================== */
+
+.activity-bar {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: var(--activity-bar-width);
+  height: 100%;
+  background: var(--bg-tertiary);
+  border-right: 1px solid var(--border-color);
+  flex-shrink: 0;
+}
+
+.activity-bar__top,
+.activity-bar__bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: var(--spacing-1) 0;
+}
+
+/* -------------------------------------------------------------------------
+   Activity Bar Item
+   ------------------------------------------------------------------------- */
+
+.activity-bar__item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 48px;
+  color: var(--text-muted);
+  transition: color var(--transition-fast);
+  cursor: pointer;
+}
+
+.activity-bar__item:hover:not(:disabled) {
+  color: var(--text-primary);
+}
+
+.activity-bar__item--active {
+  color: var(--text-primary);
+}
+
+.activity-bar__item--disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.activity-bar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.activity-bar__icon svg {
+  width: 22px;
+  height: 22px;
+  opacity: 0.85;
+}
+
+.activity-bar__item--active .activity-bar__icon svg,
+.activity-bar__item:hover .activity-bar__icon svg {
+  opacity: 1;
+}
+
+/* Active Indicator - Left border accent */
+.activity-bar__indicator {
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2px;
+  height: 20px;
+  background: var(--color-blue);
+  border-radius: 0 2px 2px 0;
+  animation: indicatorSlide 150ms ease-out;
+}
+
+@keyframes indicatorSlide {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+
+  to {
+    opacity: 1;
+    height: 20px;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Tooltip
+   ------------------------------------------------------------------------- */
+
+.activity-bar__tooltip {
+  position: absolute;
+  left: calc(100% + 8px);
+  top: 50%;
+  transform: translateY(-50%);
+  padding: var(--spacing-1) var(--spacing-2);
+  background: var(--color-surface1);
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  white-space: nowrap;
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-lg);
+  z-index: var(--z-tooltip);
+  pointer-events: none;
+  animation: tooltipFadeIn 100ms ease-out;
+}
+
+@keyframes tooltipFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50%) translateX(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   User Profile
+   ------------------------------------------------------------------------- */
+
+.activity-bar__user-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: var(--spacing-2) 0;
+}
+
+.activity-bar__user-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  overflow: hidden;
+  border: 2px solid transparent;
+}
+
+.activity-bar__user-button:hover {
+  border-color: var(--color-blue);
+  transform: scale(1.05);
+}
+
+.activity-bar__avatar {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.activity-bar__avatar-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--color-blue), var(--color-purple));
+  color: white;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 50%;
+}
+
+/* User Menu Backdrop */
+.activity-bar__user-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 999;
+}
+
+/* User Dropdown Menu */
+.activity-bar__user-menu {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: calc(100% + 8px);
+  min-width: 240px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  z-index: 1000;
+  overflow: hidden;
+  animation: menuSlideUp 150ms ease-out;
+}
+
+@keyframes menuSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.activity-bar__user-info {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-3);
+}
+
+.activity-bar__menu-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.activity-bar__user-details {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  overflow: hidden;
+}
+
+.activity-bar__user-name {
+  font-size: var(--font-size-sm);
+  font-weight: 600;
+  color: var(--text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity-bar__user-email {
+  font-size: 11px;
+  color: var(--text-muted);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.activity-bar__menu-divider {
+  height: 1px;
+  background: var(--border-color);
+}
+
+.activity-bar__menu-item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  width: 100%;
+  padding: var(--spacing-2) var(--spacing-3);
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+}
+
+.activity-bar__menu-item:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.activity-bar__menu-item--danger {
+  color: var(--color-red);
+}
+
+.activity-bar__menu-item--danger:hover {
+  background: rgba(247, 118, 142, 0.1);
+  color: var(--color-red);
+}
+
+.activity-bar__menu-item svg {
+  flex-shrink: 0;
+}

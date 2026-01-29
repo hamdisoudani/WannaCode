@@ -1,0 +1,147 @@
+/* ==========================================================================
+   Terminal Panel Styles
+   ========================================================================== */
+
+.terminal-panel {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+}
+
+/* -------------------------------------------------------------------------
+   Header
+   ------------------------------------------------------------------------- */
+
+.terminal-panel__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: var(--tab-height);
+    padding: 0 var(--spacing-2);
+    background: var(--bg-secondary);
+    border-bottom: 1px solid var(--border-color);
+    flex-shrink: 0;
+}
+
+.terminal-panel__tabs {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+}
+
+.terminal-panel__tab {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-1) var(--spacing-3);
+    font-size: var(--font-size-sm);
+    color: var(--text-muted);
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.terminal-panel__tab:hover {
+    background: var(--bg-hover);
+    color: var(--text-secondary);
+}
+
+.terminal-panel__tab--active {
+    color: var(--text-primary);
+    background: var(--color-surface0);
+}
+
+.terminal-panel__actions {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-1);
+}
+
+.terminal-panel__action {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    color: var(--text-muted);
+    border-radius: var(--radius-sm);
+    transition: background var(--transition-fast), color var(--transition-fast);
+}
+
+.terminal-panel__action:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+/* -------------------------------------------------------------------------
+   Content
+   ------------------------------------------------------------------------- */
+
+.terminal-panel__content {
+    flex: 1;
+    min-height: 0;
+    padding: var(--spacing-3);
+    font-family: var(--font-mono);
+    font-size: var(--font-size-sm);
+    line-height: var(--line-height-relaxed);
+    overflow: auto;
+}
+
+.terminal-panel__placeholder {
+    display: flex;
+    align-items: center;
+}
+
+.terminal-panel__prompt {
+    display: flex;
+    align-items: center;
+}
+
+.terminal-panel__user {
+    color: var(--color-green);
+    font-weight: var(--font-weight-medium);
+}
+
+.terminal-panel__separator {
+    color: var(--text-muted);
+}
+
+.terminal-panel__host {
+    color: var(--color-blue);
+    font-weight: var(--font-weight-medium);
+}
+
+.terminal-panel__path {
+    color: var(--color-mauve);
+}
+
+.terminal-panel__symbol {
+    color: var(--text-primary);
+    margin-right: var(--spacing-2);
+}
+
+/* -------------------------------------------------------------------------
+   Cursor Animation (Vim Style)
+   ------------------------------------------------------------------------- */
+
+.terminal-panel__cursor {
+    display: inline-block;
+    width: 8px;
+    height: 18px;
+    background: var(--color-lavender);
+    animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0;
+    }
+}

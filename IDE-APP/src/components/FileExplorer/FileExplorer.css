@@ -1,0 +1,33 @@
+/* ==========================================================================
+   FileExplorer Styles - Professional File Tree
+   ========================================================================== */
+
+.file-explorer {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
+  /* Important for flex children */
+}
+
+/* -------------------------------------------------------------------------
+   File Tree - Content only, doesn't stretch
+   ------------------------------------------------------------------------- */
+
+.file-explorer__tree {
+  flex-shrink: 0;
+  /* Don't shrink - take only needed height */
+  overflow-x: hidden;
+  padding: var(--spacing-1) 0;
+}
+
+/* -------------------------------------------------------------------------
+   Empty Area - Click to deselect, fills remaining space
+   ------------------------------------------------------------------------- */
+
+.file-explorer__empty-area {
+  flex: 1;
+  /* Take all remaining space */
+  min-height: 50px;
+  cursor: default;
+}

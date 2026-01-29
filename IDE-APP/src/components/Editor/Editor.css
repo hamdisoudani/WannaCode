@@ -1,0 +1,245 @@
+/* ==========================================================================
+   Monaco Editor Styles - Professional Editor Integration
+   ========================================================================== */
+
+.editor-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-editor);
+}
+
+/* -------------------------------------------------------------------------
+   Loading State
+   ------------------------------------------------------------------------- */
+
+.editor-loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: var(--spacing-4);
+  background: var(--bg-editor);
+}
+
+.editor-loading__spinner {
+  width: 32px;
+  height: 32px;
+  border: 2px solid var(--color-surface1);
+  border-top-color: var(--color-blue);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.editor-loading__text {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+}
+
+/* -------------------------------------------------------------------------
+   Monaco Editor Overrides
+   ------------------------------------------------------------------------- */
+
+.editor-container .monaco-editor {
+  position: absolute !important;
+  inset: 0;
+}
+
+/* Scrollbar styling */
+.editor-container .monaco-scrollable-element>.scrollbar>.slider {
+  background: var(--color-surface1) !important;
+  border-radius: 4px;
+}
+
+.editor-container .monaco-scrollable-element>.scrollbar>.slider:hover {
+  background: var(--color-surface2) !important;
+}
+
+/* Selection styling */
+.editor-container .selected-text {
+  background-color: rgba(122, 162, 247, 0.2) !important;
+}
+
+/* Find widget */
+.editor-container .find-widget {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color-strong) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Autocomplete widget */
+.editor-container .suggest-widget {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color-strong) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* Parameter hints */
+.editor-container .parameter-hints-widget {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color-strong) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* Hover tooltips */
+.editor-container .monaco-hover {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color-strong) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-md) !important;
+}
+
+/* Context menu */
+.monaco-menu {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color-strong) !important;
+  border-radius: var(--radius-md) !important;
+  box-shadow: var(--shadow-lg) !important;
+  padding: var(--spacing-1) 0 !important;
+}
+
+.monaco-menu .monaco-action-bar.vertical .action-item {
+  padding: var(--spacing-1) var(--spacing-2) !important;
+}
+
+.monaco-menu .monaco-action-bar.vertical .action-item:hover {
+  background: var(--bg-hover) !important;
+}
+
+/* Breadcrumbs */
+.editor-container .monaco-breadcrumbs {
+  background: var(--bg-secondary) !important;
+  border-bottom: 1px solid var(--border-color);
+  padding: 0 var(--spacing-2);
+}
+
+/* Minimap */
+.editor-container .minimap-decorations-layer {
+  opacity: 0.7;
+}
+
+.editor-container .minimap-slider {
+  background: rgba(122, 162, 247, 0.1) !important;
+}
+
+.editor-container .minimap-slider:hover {
+  background: rgba(122, 162, 247, 0.15) !important;
+}
+
+/* Quick input (Ctrl+P) */
+.quick-input-widget {
+  background: var(--bg-secondary) !important;
+  border: 1px solid var(--border-color-strong) !important;
+  border-radius: var(--radius-lg) !important;
+  box-shadow: var(--shadow-xl) !important;
+}
+
+.quick-input-widget .monaco-inputbox {
+  background: var(--bg-primary) !important;
+  border: 1px solid var(--border-color) !important;
+  border-radius: var(--radius-md) !important;
+}
+
+/* Editor focus */
+.editor-container:focus-within {
+  outline: none;
+}
+
+/* Smooth appearance */
+.editor-container .monaco-editor {
+  animation: editorFadeIn 150ms ease-out;
+}
+
+@keyframes editorFadeIn {
+  from {
+    opacity: 0.9;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* Hyprland-style smooth entry transition */
+.editor-transition-wrapper {
+  height: 100%;
+  animation: slideIn 0.25s cubic-bezier(0.05, 0.7, 0.1, 1.0);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Import Path Validation Decorations
+   ------------------------------------------------------------------------- */
+
+/* Valid relative path (green) */
+.import-path-valid-relative-inline {
+  color: #9ece6a !important;
+  /* Tokyo Night green */
+  font-weight: 500;
+}
+
+/* Valid node_module (blue/cyan) */
+.import-path-valid-node-module-inline {
+  color: #7dcfff !important;
+  /* Tokyo Night cyan */
+  font-weight: 500;
+}
+
+/* Invalid import (red/orange) */
+.import-path-invalid-inline {
+  color: #f7768e !important;
+  /* Tokyo Night red */
+  font-weight: 500;
+  text-decoration: wavy underline;
+  text-decoration-color: #f7768e;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 3px;
+}
+
+/* Optional: Add subtle background hints */
+.import-path-valid-relative {
+  background-color: rgba(158, 206, 106, 0.08);
+  border-radius: 3px;
+}
+
+.import-path-valid-node-module {
+  background-color: rgba(125, 207, 255, 0.08);
+  border-radius: 3px;
+}
+
+.import-path-invalid {
+  background-color: rgba(247, 118, 142, 0.12);
+  border-radius: 3px;
+}
+
+/* Valid path alias (purple) */
+.import-path-valid-alias-inline {
+  color: #bb9af7 !important;
+  /* Tokyo Night purple */
+  font-weight: 500;
+}
+
+.import-path-valid-alias {
+  background-color: rgba(187, 154, 247, 0.08);
+  border-radius: 3px;
+}

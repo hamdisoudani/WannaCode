@@ -1,0 +1,324 @@
+/* ==========================================================================
+   FileNode Styles - VS Code-like File Tree Items
+   ========================================================================== */
+
+.file-node {
+  user-select: none;
+  position: relative;
+}
+
+/* -------------------------------------------------------------------------
+   Tree Indent Guides (vertical lines)
+   Only visible when sidebar is hovered
+   ------------------------------------------------------------------------- */
+
+.file-node__guide {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: transparent;
+  transition: background var(--transition-fast);
+  pointer-events: none;
+}
+
+/* Show guides on sidebar hover */
+.sidebar--hovered .file-node__guide {
+  background: var(--border-color);
+}
+
+/* -------------------------------------------------------------------------
+   Node Item (row)
+   ------------------------------------------------------------------------- */
+
+.file-node__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  height: 24px;
+  /* Slightly taller for better readability */
+  padding-right: var(--spacing-2);
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  border-radius: 0;
+  margin: 0;
+  position: relative;
+}
+
+.file-node__item:hover {
+  background: var(--bg-hover);
+}
+
+.file-node__item:active {
+  background: var(--bg-active);
+}
+
+/* Selected state */
+.file-node__item--selected {
+  background: var(--bg-selected);
+}
+
+.file-node__item--selected::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--color-blue);
+}
+
+/* Focus state */
+.file-node__item--selected:focus-within,
+.file-node__item--selected.file-node__item--focused {
+  background: var(--bg-active);
+  outline: 1px solid rgba(122, 162, 247, 0.5);
+  outline-offset: -1px;
+}
+
+/* -------------------------------------------------------------------------
+   Chevron
+   ------------------------------------------------------------------------- */
+
+.file-node__chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  flex-shrink: 0;
+  transition: transform var(--transition-fast);
+}
+
+.file-node__chevron svg {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+.file-node__item:hover .file-node__chevron svg {
+  opacity: 1;
+}
+
+.file-node__chevron--expanded {
+  transform: rotate(90deg);
+}
+
+/* -------------------------------------------------------------------------
+   Icon - Larger for better visibility
+   ------------------------------------------------------------------------- */
+
+.file-node__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+
+.file-node__icon svg {
+  width: 18px;
+  height: 18px;
+}
+
+/* -------------------------------------------------------------------------
+   Name - Larger text
+   ------------------------------------------------------------------------- */
+
+.file-node__name {
+  font-size: 13px;
+  /* Larger than before */
+  color: var(--text-secondary);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  flex: 1;
+  min-width: 0;
+  line-height: 1.4;
+}
+
+.file-node__item:hover .file-node__name {
+  color: var(--text-primary);
+}
+
+.file-node__item--selected .file-node__name {
+  color: var(--text-primary);
+}
+
+.file-node__item--directory .file-node__name {
+  font-weight: var(--font-weight-medium);
+  color: var(--text-primary);
+}
+
+/* Dimmed folders (node_modules, .git, etc.) */
+.file-node__item--dimmed {
+  opacity: 0.5;
+}
+
+.file-node__item--dimmed:hover {
+  opacity: 0.7;
+}
+
+.file-node__item--dimmed .file-node__name {
+  font-style: italic;
+}
+
+/* -------------------------------------------------------------------------
+   Loading
+   ------------------------------------------------------------------------- */
+
+.file-node__loading {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  margin-left: auto;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.4;
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Hover Actions
+   ------------------------------------------------------------------------- */
+
+.file-node__actions {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  margin-left: auto;
+  flex-shrink: 0;
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+.file-node__item:hover .file-node__actions {
+  opacity: 1;
+}
+
+.file-node__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 20px;
+  height: 20px;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.file-node__action svg {
+  width: 14px;
+  height: 14px;
+}
+
+.file-node__action:hover {
+  background: var(--bg-active);
+  color: var(--text-primary);
+}
+
+.file-node__action:active {
+  transform: scale(0.9);
+}
+
+/* -------------------------------------------------------------------------
+   Children container with indent guides
+   ------------------------------------------------------------------------- */
+
+.file-node__children {
+  position: relative;
+}
+
+/* Indent guide line for children - uses CSS variable for position */
+.file-node__children::before {
+  content: '';
+  position: absolute;
+  left: var(--guide-left, 16px);
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: transparent;
+  transition: background var(--transition-fast);
+  pointer-events: none;
+}
+
+/* Show guide line on sidebar hover */
+.sidebar--hovered .file-node__children::before {
+  background: var(--border-color);
+}
+
+/* -------------------------------------------------------------------------
+   Empty folder message
+   ------------------------------------------------------------------------- */
+
+.file-node__empty {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-style: italic;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  opacity: 0.6;
+}
+
+/* -------------------------------------------------------------------------
+   Inline Create Input (VS Code style)
+   ------------------------------------------------------------------------- */
+
+.file-node__create-input {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  height: 24px;
+  padding-right: var(--spacing-2);
+  background: var(--bg-selected);
+  animation: fadeSlideIn 150ms ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.file-node__create-field {
+  flex: 1;
+  min-width: 0;
+  height: 20px;
+  padding: 0 var(--spacing-2);
+  background: var(--bg-primary);
+  border: 1px solid var(--color-blue);
+  border-radius: var(--radius-sm);
+  font-size: 13px;
+  font-family: inherit;
+  color: var(--text-primary);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--color-blue);
+}
+
+.file-node__create-field:focus {
+  border-color: var(--color-blue);
+  box-shadow: 0 0 0 2px rgba(122, 162, 247, 0.3);
+}
+
+.file-node__create-field::placeholder {
+  color: var(--text-muted);
+  font-style: italic;
+}

@@ -1,0 +1,172 @@
+/* ==========================================================================
+   CSS Custom Properties - Professional Dark Theme
+   ========================================================================== */
+
+:root {
+  /* -------------------------------------------------------------------------
+     Color Palette - Refined Catppuccin Mocha
+     ------------------------------------------------------------------------- */
+  
+  /* Base Colors - Deeper, richer tones */
+  --color-base: #1a1b26;
+  --color-mantle: #16161e;
+  --color-crust: #13131a;
+  
+  /* Surface Colors - Better contrast steps */
+  --color-surface0: #1f2029;
+  --color-surface1: #292a37;
+  --color-surface2: #363848;
+  
+  /* Overlay Colors */
+  --color-overlay0: #565869;
+  --color-overlay1: #6e7087;
+  --color-overlay2: #8789a0;
+  
+  /* Text Colors - Improved readability */
+  --color-text: #c8d3f5;
+  --color-subtext0: #a9b1d6;
+  --color-subtext1: #b4bcd0;
+  
+  /* Accent Colors - Vibrant but not harsh */
+  --color-lavender: #b4befe;
+  --color-blue: #7aa2f7;
+  --color-sapphire: #7dcfff;
+  --color-sky: #89ddff;
+  --color-teal: #73daca;
+  --color-green: #9ece6a;
+  --color-yellow: #e0af68;
+  --color-peach: #ff9e64;
+  --color-maroon: #f7768e;
+  --color-red: #f7768e;
+  --color-mauve: #bb9af7;
+  --color-pink: #ff7eb6;
+  --color-flamingo: #ffc0cb;
+  --color-rosewater: #ffd7d9;
+
+  /* -------------------------------------------------------------------------
+     Semantic Colors
+     ------------------------------------------------------------------------- */
+  --color-primary: var(--color-blue);
+  --color-secondary: var(--color-lavender);
+  --color-success: var(--color-green);
+  --color-warning: var(--color-yellow);
+  --color-error: var(--color-red);
+  --color-info: var(--color-sapphire);
+
+  /* -------------------------------------------------------------------------
+     UI Colors - Professional depth
+     ------------------------------------------------------------------------- */
+  --bg-primary: var(--color-base);
+  --bg-secondary: var(--color-mantle);
+  --bg-tertiary: var(--color-crust);
+  --bg-sidebar: var(--color-mantle);
+  --bg-editor: var(--color-base);
+  --bg-terminal: var(--color-crust);
+  --bg-hover: rgba(122, 162, 247, 0.08);
+  --bg-active: rgba(122, 162, 247, 0.12);
+  --bg-selected: rgba(122, 162, 247, 0.15);
+  
+  /* Border colors - Subtle but defined */
+  --border-color: rgba(255, 255, 255, 0.06);
+  --border-color-subtle: rgba(255, 255, 255, 0.04);
+  --border-color-strong: rgba(255, 255, 255, 0.1);
+  
+  /* Text hierarchy */
+  --text-primary: var(--color-text);
+  --text-secondary: var(--color-subtext0);
+  --text-muted: var(--color-overlay1);
+  --text-disabled: var(--color-overlay0);
+
+  /* -------------------------------------------------------------------------
+     Typography
+     ------------------------------------------------------------------------- */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+  
+  --font-size-xs: 0.6875rem;  /* 11px */
+  --font-size-sm: 0.75rem;    /* 12px */
+  --font-size-base: 0.8125rem; /* 13px */
+  --font-size-lg: 0.875rem;   /* 14px */
+  --font-size-xl: 1rem;       /* 16px */
+  
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  
+  --line-height-tight: 1.25;
+  --line-height-normal: 1.5;
+  --line-height-relaxed: 1.75;
+
+  /* -------------------------------------------------------------------------
+     Spacing
+     ------------------------------------------------------------------------- */
+  --spacing-0: 0;
+  --spacing-px: 1px;
+  --spacing-0-5: 0.125rem; /* 2px */
+  --spacing-1: 0.25rem;    /* 4px */
+  --spacing-1-5: 0.375rem; /* 6px */
+  --spacing-2: 0.5rem;     /* 8px */
+  --spacing-2-5: 0.625rem; /* 10px */
+  --spacing-3: 0.75rem;    /* 12px */
+  --spacing-4: 1rem;       /* 16px */
+  --spacing-5: 1.25rem;    /* 20px */
+  --spacing-6: 1.5rem;     /* 24px */
+  --spacing-8: 2rem;       /* 32px */
+
+  /* -------------------------------------------------------------------------
+     Layout Dimensions
+     ------------------------------------------------------------------------- */
+  --sidebar-width: 240px;
+  --sidebar-min-width: 170px;
+  --sidebar-max-width: 400px;
+  --activity-bar-width: 48px;
+  --terminal-height: 250px;
+  --terminal-min-height: 100px;
+  --terminal-max-height: 500px;
+  --tab-height: 35px;
+  --statusbar-height: 22px;
+  --titlebar-height: 30px;
+  --panel-header-height: 35px;
+
+  /* -------------------------------------------------------------------------
+     Border Radius
+     ------------------------------------------------------------------------- */
+  --radius-xs: 2px;
+  --radius-sm: 3px;
+  --radius-md: 4px;
+  --radius-lg: 6px;
+  --radius-xl: 8px;
+  --radius-full: 9999px;
+
+  /* -------------------------------------------------------------------------
+     Shadows - Layered depth
+     ------------------------------------------------------------------------- */
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.25), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.3), 0 2px 4px -1px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.25);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.5), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+  --shadow-inner: inset 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 20px rgba(122, 162, 247, 0.15);
+  --shadow-glow-sm: 0 0 10px rgba(122, 162, 247, 0.1);
+
+  /* -------------------------------------------------------------------------
+     Transitions
+     ------------------------------------------------------------------------- */
+  --transition-fast: 80ms ease-out;
+  --transition-normal: 120ms ease-out;
+  --transition-slow: 200ms ease-out;
+  --transition-smooth: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 300ms cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* -------------------------------------------------------------------------
+     Z-Index Scale
+     ------------------------------------------------------------------------- */
+  --z-base: 0;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-overlay: 300;
+  --z-modal: 400;
+  --z-tooltip: 500;
+  --z-max: 9999;
+}

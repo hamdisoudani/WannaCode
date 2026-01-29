@@ -1,0 +1,127 @@
+/* ==========================================================================
+   StatusBar Styles
+   ========================================================================== */
+
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: var(--statusbar-height);
+  background: var(--color-blue);
+  color: #fff;
+  font-size: var(--font-size-xs);
+  font-family: var(--font-sans);
+  padding: 0 var(--spacing-2);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+/* -------------------------------------------------------------------------
+   Sections
+   ------------------------------------------------------------------------- */
+
+.statusbar__left,
+.statusbar__right {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-0-5);
+}
+
+.statusbar__loading {
+  color: #ffffff !important;
+  margin-left: 10px;
+  background: transparent !important;
+  font-weight: 500;
+}
+
+.statusbar__spinner {
+  display: inline-block;
+  margin-right: 6px;
+  font-size: 14px;
+}
+
+.spin-animation {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* -------------------------------------------------------------------------
+   Status Item
+   ------------------------------------------------------------------------- */
+
+.statusbar__item {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: 0 var(--spacing-1-5);
+  height: 100%;
+  background: transparent;
+  border: none;
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background var(--transition-fast);
+}
+
+.statusbar__item:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+
+.statusbar__item:active {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* -------------------------------------------------------------------------
+   Icon & Text
+   ------------------------------------------------------------------------- */
+
+.statusbar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.95;
+}
+
+.statusbar__icon svg {
+  width: 14px;
+  height: 14px;
+}
+
+.statusbar__text {
+  line-height: 1;
+}
+
+/* -------------------------------------------------------------------------
+   Language Selector (slightly emphasized)
+   ------------------------------------------------------------------------- */
+
+.statusbar__language {
+  font-weight: var(--font-weight-medium);
+}
+
+/* -------------------------------------------------------------------------
+   Responsive - Hide less important items on narrow screens
+   ------------------------------------------------------------------------- */
+
+@media (max-width: 800px) {
+  .statusbar__left>.statusbar__item:nth-child(n+2) {
+    display: none;
+  }
+}
+
+@media (max-width: 600px) {
+  .statusbar__right>.statusbar__item:nth-child(-n+2) {
+    display: none;
+  }
+}

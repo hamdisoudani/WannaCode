@@ -1,0 +1,245 @@
+/* ==========================================================================
+   TitleBar Styles - Professional VS Code-like title bar
+   ========================================================================== */
+
+.titlebar {
+  display: flex;
+  align-items: center;
+  height: var(--titlebar-height);
+  background: var(--bg-tertiary);
+  border-bottom: 1px solid var(--border-color);
+  user-select: none;
+  -webkit-app-region: drag;
+  flex-shrink: 0;
+}
+
+/* Make interactive elements clickable */
+.titlebar button,
+.titlebar__menus,
+.titlebar__actions,
+.titlebar__controls {
+  -webkit-app-region: no-drag;
+}
+
+/* -------------------------------------------------------------------------
+   App Icon
+   ------------------------------------------------------------------------- */
+
+.titlebar__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 100%;
+  color: var(--color-blue);
+  opacity: 0.9;
+}
+
+.titlebar__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+/* -------------------------------------------------------------------------
+   Menu Bar
+   ------------------------------------------------------------------------- */
+
+.titlebar__menus {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: var(--spacing-0-5);
+}
+
+.titlebar__menu-container {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.titlebar__menu {
+  display: flex;
+  align-items: center;
+  height: calc(100% - 4px);
+  padding: 0 var(--spacing-2);
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.titlebar__menu:hover,
+.titlebar__menu--active {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+/* -------------------------------------------------------------------------
+   Dropdown Menu
+   ------------------------------------------------------------------------- */
+
+.titlebar__dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 280px;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+  padding: var(--spacing-1) 0;
+  z-index: 1000;
+  animation: dropdownFadeIn 100ms ease-out;
+}
+
+@keyframes dropdownFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.titlebar__dropdown-item {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: var(--spacing-1-5) var(--spacing-3);
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  text-align: left;
+  transition: background var(--transition-fast);
+}
+
+.titlebar__dropdown-item:hover:not(:disabled) {
+  background: var(--bg-hover);
+}
+
+.titlebar__dropdown-item--disabled,
+.titlebar__dropdown-item:disabled {
+  color: var(--text-muted);
+  cursor: default;
+  opacity: 0.5;
+}
+
+.titlebar__dropdown-item-check {
+  width: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-blue);
+}
+
+.titlebar__dropdown-item-label {
+  flex: 1;
+  white-space: nowrap;
+}
+
+.titlebar__dropdown-item-shortcut {
+  margin-left: var(--spacing-4);
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  font-family: var(--font-mono);
+}
+
+.titlebar__dropdown-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: var(--spacing-1) 0;
+}
+
+/* -------------------------------------------------------------------------
+   Title / Spacer (draggable)
+   ------------------------------------------------------------------------- */
+
+.titlebar__title {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  -webkit-app-region: drag;
+}
+
+.titlebar__project-name {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  font-weight: var(--font-weight-normal);
+  letter-spacing: 0.01em;
+}
+
+/* -------------------------------------------------------------------------
+   Right-side Actions
+   ------------------------------------------------------------------------- */
+
+.titlebar__actions {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  gap: var(--spacing-0-5);
+  padding-right: var(--spacing-2);
+}
+
+.titlebar__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 22px;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.titlebar__action:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.titlebar__action--active {
+  color: var(--color-blue);
+  background: var(--bg-active);
+}
+
+.titlebar__action svg {
+  width: 14px;
+  height: 14px;
+}
+
+/* -------------------------------------------------------------------------
+   Window Controls
+   ------------------------------------------------------------------------- */
+
+.titlebar__controls {
+  display: flex;
+  height: 100%;
+}
+
+.titlebar__control {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 46px;
+  height: 100%;
+  color: var(--text-muted);
+  transition: all var(--transition-fast);
+}
+
+.titlebar__control svg {
+  width: 10px;
+  height: 10px;
+}
+
+.titlebar__control:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.titlebar__control--close:hover {
+  background: #e81123;
+  color: white;
+}

@@ -1,0 +1,183 @@
+/* ==========================================================================
+   Unsaved Changes Dialog Styles
+   ========================================================================== */
+
+.unsaved-changes-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(2px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.unsaved-changes-dialog {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color-strong);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-xl);
+    width: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    animation: slideIn 0.2s ease-out;
+}
+
+.unsaved-changes-dialog__icon {
+    display: flex;
+    justify-content: center;
+    padding-top: var(--spacing-6);
+    color: var(--color-yellow);
+}
+
+.unsaved-changes-dialog__content {
+    padding: var(--spacing-4) var(--spacing-6);
+    text-align: center;
+}
+
+.unsaved-changes-dialog__title {
+    margin: 0 0 var(--spacing-2);
+    font-size: var(--font-size-lg);
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.unsaved-changes-dialog__message {
+    margin: 0 0 var(--spacing-4);
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+.unsaved-changes-dialog__list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-4);
+    background: var(--bg-primary);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    max-height: 150px;
+    overflow-y: auto;
+    text-align: left;
+}
+
+.unsaved-changes-dialog__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    padding: var(--spacing-2) var(--spacing-3);
+    border-bottom: 1px solid var(--border-color);
+    font-size: var(--font-size-sm);
+}
+
+.unsaved-changes-dialog__item:last-child {
+    border-bottom: none;
+}
+
+.unsaved-changes-dialog__file-name {
+    color: var(--text-primary);
+    font-weight: 500;
+}
+
+.unsaved-changes-dialog__file-path {
+    color: var(--text-muted);
+    font-size: var(--font-size-xs);
+    margin-left: auto;
+    opacity: 0.7;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 200px;
+}
+
+.unsaved-changes-dialog__more {
+    padding: var(--spacing-2);
+    text-align: center;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    font-style: italic;
+}
+
+.unsaved-changes-dialog__warning {
+    margin: 0;
+    font-size: var(--font-size-sm);
+    color: var(--color-red);
+}
+
+.unsaved-changes-dialog__actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-3);
+    padding: var(--spacing-4) var(--spacing-6);
+    background: var(--bg-primary);
+    border-top: 1px solid var(--border-color);
+}
+
+.unsaved-changes-dialog__btn {
+    padding: var(--spacing-2) var(--spacing-4);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+}
+
+.unsaved-changes-dialog__btn:focus {
+    outline: 2px solid var(--color-blue);
+    outline-offset: 2px;
+}
+
+.unsaved-changes-dialog__btn--secondary {
+    background: transparent;
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+.unsaved-changes-dialog__btn--secondary:hover {
+    background: var(--bg-hover);
+    color: var(--text-primary);
+}
+
+.unsaved-changes-dialog__btn--danger {
+    background: transparent;
+    border-color: var(--color-red);
+    color: var(--color-red);
+}
+
+.unsaved-changes-dialog__btn--danger:hover {
+    background: var(--color-red);
+    color: white;
+}
+
+.unsaved-changes-dialog__btn--primary {
+    background: var(--color-blue);
+    color: white;
+}
+
+.unsaved-changes-dialog__btn--primary:hover {
+    background: #6a92e7;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}

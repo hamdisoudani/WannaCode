@@ -1,0 +1,83 @@
+/* ==========================================================================
+   Tab Context Menu Styles
+   ========================================================================== */
+
+.tab-context-menu-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 9998;
+    /* Transparent overlay to handle clicking outside */
+}
+
+.tab-context-menu {
+    position: fixed;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color-strong);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-lg);
+    padding: var(--spacing-1);
+    min-width: 160px;
+    z-index: 9999;
+    animation: menuFadeIn 0.1s ease-out;
+}
+
+@keyframes menuFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.tab-context-menu__header {
+    padding: var(--spacing-2) var(--spacing-3);
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    pointer-events: none;
+}
+
+.tab-context-menu__item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-2);
+    width: 100%;
+    padding: var(--spacing-2) var(--spacing-3);
+    border: none;
+    background: transparent;
+    color: var(--text-primary);
+    font-size: var(--font-size-sm);
+    text-align: left;
+    cursor: pointer;
+    border-radius: var(--radius-sm);
+}
+
+.tab-context-menu__item:hover {
+    background: var(--bg-hover);
+}
+
+.tab-context-menu__item--danger {
+    color: var(--color-red);
+}
+
+.tab-context-menu__item--danger:hover {
+    background: rgba(247, 118, 142, 0.1);
+}
+
+.tab-context-menu__separator {
+    height: 1px;
+    background: var(--border-color);
+    margin: var(--spacing-1) 0;
+}
+
+.tab-context-menu__shortcut {
+    margin-left: auto;
+    font-size: var(--font-size-xs);
+    color: var(--text-muted);
+}

@@ -1,0 +1,292 @@
+/* ==========================================================================
+   Sidebar Styles - VS Code-like Explorer Panel
+   ========================================================================== */
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: hidden;
+  background: var(--bg-sidebar);
+}
+
+/* -------------------------------------------------------------------------
+   Section Header (Explorer title with actions)
+   ------------------------------------------------------------------------- */
+
+.sidebar__section {
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.sidebar__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--spacing-2) var(--spacing-3);
+  height: 35px;
+  flex-shrink: 0;
+}
+
+.sidebar__section-title {
+  font-size: 11px;
+  font-weight: var(--font-weight-semibold);
+  color: var(--text-secondary);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.sidebar__header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-0-5);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+}
+
+/* Show header actions when sidebar is hovered */
+.sidebar--hovered .sidebar__header-actions {
+  opacity: 1;
+}
+
+/* -------------------------------------------------------------------------
+   Project Header - Cleaner VS Code style
+   ------------------------------------------------------------------------- */
+
+.sidebar__project-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 var(--spacing-2) 0 var(--spacing-2);
+  min-height: 24px;
+}
+
+.sidebar__project-toggle {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-1);
+  padding: var(--spacing-0-5) var(--spacing-1);
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex: 1;
+  min-width: 0;
+  border-radius: var(--radius-sm);
+  transition: background var(--transition-fast);
+}
+
+.sidebar__project-toggle:hover {
+  background: var(--bg-hover);
+}
+
+.sidebar__project-chevron {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  color: var(--text-muted);
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.sidebar__project-chevron svg {
+  width: 14px;
+  height: 14px;
+}
+
+.sidebar__project-chevron--expanded {
+  transform: rotate(90deg);
+}
+
+.sidebar__project-name {
+  font-size: 11px;
+  font-weight: var(--font-weight-bold);
+  color: var(--text-primary);
+  letter-spacing: 0.02em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.sidebar__project-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-0-5);
+  opacity: 0;
+  transition: opacity var(--transition-fast);
+  flex-shrink: 0;
+}
+
+/* Show actions when hovering anywhere on sidebar */
+.sidebar--hovered .sidebar__project-actions {
+  opacity: 1;
+}
+
+/* -------------------------------------------------------------------------
+   Action Buttons - Slightly larger
+   ------------------------------------------------------------------------- */
+
+.sidebar__action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.sidebar__action svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sidebar__action:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.sidebar__action:active {
+  background: var(--bg-active);
+  transform: scale(0.95);
+}
+
+/* -------------------------------------------------------------------------
+   Content Area
+   ------------------------------------------------------------------------- */
+
+.sidebar__content {
+  flex: 1;
+  min-height: 0;
+  /* Important for nested flex children */
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.sidebar__content--collapsed {
+  height: 0;
+  overflow: hidden;
+}
+
+/* Note: Inline create input styles are now in FileNode.css */
+
+/* -------------------------------------------------------------------------
+   Empty State
+   ------------------------------------------------------------------------- */
+
+.sidebar__empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-8) var(--spacing-4);
+  text-align: center;
+  height: 100%;
+}
+
+.sidebar__empty-text {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-4);
+  line-height: 1.5;
+}
+
+.sidebar__open-button {
+  padding: var(--spacing-2) var(--spacing-4);
+  background: var(--color-blue);
+  color: var(--bg-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.sidebar__open-button:hover {
+  background: var(--color-sapphire);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.sidebar__open-button:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-xs);
+}
+
+
+/* -------------------------------------------------------------------------
+   Search Panel
+   ------------------------------------------------------------------------- */
+
+.sidebar__search {
+  display: flex;
+  flex-direction: column;
+  padding: var(--spacing-2);
+  gap: var(--spacing-3);
+}
+
+.sidebar__search-input-wrapper {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  padding: var(--spacing-2);
+  background: var(--bg-primary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: border-color var(--transition-fast);
+}
+
+.sidebar__search-input-wrapper:focus-within {
+  border-color: var(--color-blue);
+}
+
+.sidebar__search-input-wrapper svg {
+  color: var(--text-muted);
+  flex-shrink: 0;
+}
+
+.sidebar__search-input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  font-size: var(--font-size-sm);
+  color: var(--text-primary);
+  outline: none;
+}
+
+.sidebar__search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.sidebar__search-clear {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  color: var(--text-muted);
+  border-radius: var(--radius-sm);
+  transition: all var(--transition-fast);
+}
+
+.sidebar__search-clear:hover {
+  background: var(--bg-hover);
+  color: var(--text-primary);
+}
+
+.sidebar__search-results {
+  flex: 1;
+}
+
+.sidebar__search-hint {
+  font-size: var(--font-size-sm);
+  color: var(--text-muted);
+  text-align: center;
+  padding: var(--spacing-4);
+}
